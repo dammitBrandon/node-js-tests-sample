@@ -8,6 +8,7 @@ phases:
   pre_build:
     commands:
       - echo Installing source NPM dependencies...
+      - echo this is a test
       - npm install
   build:
     commands:
