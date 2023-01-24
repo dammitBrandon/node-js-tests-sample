@@ -13,12 +13,18 @@ phases:
       nodejs: 12
   pre_build:
     commands:
+      - echo $AWS_ACCOUNT_ID
+      - echo $IMAGE_TAG
+      - echo $IMAGE_REPO_NAME
+      - echo $AWS_DEFAULT_REGION
+      - echo API_ECR_TAG and API_BUILD_TAG
+      - echo $API_BUILD_TAG
+      - echo $API_ECR_TAG
       - echo Installing source NPM dependencies...
       - npm install
       - echo setting env variables
-      - export GIT_TAG=$(shell git rev-parse --short HEAD 2> /dev/null)
+      - export GIT_TAG=$(git rev-parse --short HEAD 2> /dev/null)
       - echo $GIT_TAG
-      - echo GIT_TAG
       - export API_BUILD_TAG=$(if $(BUILD_TAG),$(BUILD_TAG),aws-tests-sample-node-js/aws-tests-sample-node-js:$(GIT_TAG))
       - export API_ECR_TAG=$(if $(API_ECR_TAG),$(API_ECR_TAG), $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
       - echo Logging into ECR
@@ -32,13 +38,6 @@ phases:
       - npm test
       - npm --version
       - docker --version
-      - echo $AWS_ACCOUNT_ID
-      - echo $IMAGE_TAG
-      - echo $IMAGE_REPO_NAME
-      - echo $AWS_DEFAULT_REGION
-      - echo API_ECR_TAG and API_BUILD_TAG
-      - echo $API_BUILD_TAG
-      - echo $API_ECR_TAG
       - docker images
 #      - docker build -t aws-tests-sample-node-js/aws-tests-sample-node-js:latest .
       - docker build -t $(API_BUILD_TAG) .
