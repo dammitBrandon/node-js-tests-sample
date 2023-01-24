@@ -1,14 +1,13 @@
-FROM node:14.5.0-alpine
-MAINTAINER BBAILEY
+FROM golang:1.12-alpine AS build
+#Install git
+RUN apk add --no-cache git
+#Get the hello world package from a GitHub repository
+RUN go get github.com/golang/example/hello
+WORKDIR /go/src/github.com/golang/example/hello
+# Build the project and send the output to /bin/HelloWorld
+RUN go build -o /bin/HelloWorld
 
-RUN mkdir -p /usr/src/app
-CMD cd /usr/src/app
-# Everything under WORKDIR will assume your container destination is this directory
-WORKDIR /usr/src/app
-
-COPY Makefile package.json package-lock.json ./
-
-RUN npm install --quiet && \
-  rm -rf /root/.npm \
-
-COPY ./ ./
+FROM golang:1.12-alpine
+#Copy the build's output binary from the previous build container
+COPY --from=build /bin/HelloWorld /bin/HelloWorld
+ENTRYPOINT ["/bin/HelloWorld"]

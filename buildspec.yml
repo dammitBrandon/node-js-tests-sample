@@ -14,6 +14,8 @@ phases:
   build:
     commands:
       - echo Build started on `date`
+      - echo ls command
+      - ls -la
       - echo Running Tests
       - npm test
       - npm --version
@@ -21,8 +23,11 @@ phases:
       - echo $AWS_ACCOUNT_ID
       - echo $IMAGE_TAG
       - echo $IMAGE_REPO_NAME
-#      - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
-      - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
+      - docker images
+      - docker build .
+      - echo Checking if container is present
+      - docker images
+#      - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
   post_build:
     commands:
       - echo Tests Complete
