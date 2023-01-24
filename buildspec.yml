@@ -22,7 +22,7 @@ phases:
       - echo setting env variables
       - export GIT_TAG=$(git rev-parse --short HEAD 2> /dev/null)
       - echo $GIT_TAG
-      - export BUILD_TAG=aws-tests-sample-node-js/aws-tests-sample-node-js:$(GIT_TAG)
+      - export BUILD_TAG=aws-tests-sample-node-js/aws-tests-sample-node-js:$GIT_TAG
       - echo $BUILD_TAG
       - export ECR_TAG=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$GIT_TAG
       - echo $ECR_TAG
@@ -39,7 +39,7 @@ phases:
       - docker --version
       - docker images
 #      - docker build -t aws-tests-sample-node-js/aws-tests-sample-node-js:latest .
-      - docker build -t $(BUILD_TAG) .
+      - docker build -t $BUILD_TAG .
       - echo Checking if container is present
       - docker images
       - docker tag aws-tests-sample-node-js/aws-tests-sample-node-js:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
