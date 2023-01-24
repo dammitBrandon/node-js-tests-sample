@@ -29,6 +29,9 @@ phases:
       - echo $IMAGE_TAG
       - echo $IMAGE_REPO_NAME
       - echo $AWS_DEFAULT_REGION
+      - echo API_ECR_TAG and API_BUILD_TAG
+      - echo $API_BUILD_TAG
+      - echo $API_ECR_TAG
       - docker images
 #      - docker build -t aws-tests-sample-node-js/aws-tests-sample-node-js:latest .
       - docker build -t $(API_BUILD_TAG) .
