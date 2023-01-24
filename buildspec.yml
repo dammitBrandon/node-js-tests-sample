@@ -1,10 +1,10 @@
 # Do not change version. This is the version of aws buildspec, not the version of your buldspec file.
 version: 0.2
 
-#env:
+env:
 #  shell: bash
-#  variables:
-#    GIT_TAG: expr $(shell git rev-parse --short HEAD 2> /dev/null)
+  variables:
+    GIT_TAG: expr $(git rev-parse --short HEAD 2> /dev/null)
 #    API_BUILD_TAG: expr $(if $(BUILD_TAG),$(BUILD_TAG),aws-tests-sample-node-js/aws-tests-sample-node-js:$(GIT_TAG))
 #    API_ECR_TAG: expr $(if $(API_ECR_TAG),$(API_ECR_TAG), $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
 phases:
@@ -23,7 +23,7 @@ phases:
       - echo Installing source NPM dependencies...
       - npm install
       - echo setting env variables
-      - export GIT_TAG=$(git rev-parse --short HEAD 2> /dev/null)
+#      - export GIT_TAG=$(git rev-parse --short HEAD 2> /dev/null)
       - echo $GIT_TAG
       - export API_BUILD_TAG=$(if $(BUILD_TAG),$(BUILD_TAG),aws-tests-sample-node-js/aws-tests-sample-node-js:$(GIT_TAG))
       - export API_ECR_TAG=$(if $(API_ECR_TAG),$(API_ECR_TAG), $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
