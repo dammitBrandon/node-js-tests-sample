@@ -23,8 +23,6 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - echo ls command
-      - ls -la
       - echo Running Tests
       - npm test
       - npm --version
