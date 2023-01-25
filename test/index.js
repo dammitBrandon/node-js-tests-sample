@@ -80,13 +80,24 @@ describe('Game Function Group', () => {
 
 describe('Express Function Group', () => {
   describe('Test basic routes', () => {
-    it('Check that / returns hello world', async function() {
+    it('Check that / returns 200 status code', async function() {
       const response = await request(app).get('/');
       expect(response.statusCode).is.equal(200);
     });
-    it('Using a mock check that the function was called and returns 9', async function() {
+    
+    it('Check that / returns Hello World!', async function() {
       const response = await request(app).get('/');
       expect(response.text).is.equal('Hello World!');
+    });
+  
+    it('Check that /status returns 200 status code', async function() {
+      const response = await request(app).get('/status');
+      expect(response.statusCode).is.equal(200);
+    });
+    
+    it('Check that /status returns status: \'ok\'', async function() {
+      const response = await request(app).get('/status');
+      expect(response.body.status).is.equal('ok');
     });
   });
 });
