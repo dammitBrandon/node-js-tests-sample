@@ -9,6 +9,8 @@ phases:
       nodejs: 12
   pre_build:
     commands:
+      - echo Installing source NPM dependencies...
+      - npm install
       - echo setting env variables
       - export GIT_TAG=$(git rev-parse --short HEAD 2> /dev/null)
       - echo $GIT_TAG
