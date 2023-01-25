@@ -4,8 +4,11 @@
 const { expect } = require('chai');
 const sinon = require("sinon");
 
+const request = require("supertest");
 const { Game } = require('../src/index');
+const { app } = require('../src/index');
 const Helpers = require('../src/helpers');
+const {express} = require('express');
 
 describe('Game Function Group', () => {
   describe('Initialize Game', () => {
@@ -71,6 +74,19 @@ describe('Game Function Group', () => {
 
       mock.verify();
       expect(Id).is.equal(9);
+    });
+  });
+});
+
+describe('Express Function Group', () => {
+  describe('Test basic routes', () => {
+    it('Check that / returns hello world', async function() {
+      const response = await request(app).get('/');
+      expect(response.statusCode).is.equal(200);
+    });
+    it('Using a mock check that the function was called and returns 9', async function() {
+      const response = await request(app).get('/');
+      expect(response.text).is.equal('Hello World!');
     });
   });
 });
