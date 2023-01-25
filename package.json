@@ -4,7 +4,7 @@
   "description": "This package is used as a demonstrator with AWS CodeBuild to write unit tests.",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "node src/server.js",
     "test": "mocha"
   },
   "repository": {
