@@ -30,7 +30,10 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 
-
+app.get('/status', (req, res) => {
+    console.log('request to \'/status\' received');
+    res.status(200).json({ status: 'ok' });
+})
 
 module.exports = {
     Game,
