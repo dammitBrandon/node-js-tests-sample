@@ -1,3 +1,4 @@
+![](https://codebuild.us-west-2.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiZnZ2eEFtcXJxdjZlYXpkYSt2elNFQ3I0NFRTQ3Ric1BkNEJZM0JBc2FWeGlqNUR3Zm5VTCszSDZ1bERGTVBQNDZQdW9GRDdIK0wrZHNsUEdvc1B2aG5VPSIsIml2UGFyYW1ldGVyU3BlYyI6ImU2alRlZG1Qc3B6QlFHM3giLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=main)
 # Sample Game Unit Test Application
 [![license](https://img.shields.io/badge/license-MIT-green)](https://github.com/scttzth/node-js-game-app-unit-tests/blob/main/LICENSE)
 
