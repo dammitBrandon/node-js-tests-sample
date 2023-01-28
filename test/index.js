@@ -97,7 +97,7 @@ describe('Express Function Group', () => {
     
     it('Check that /status returns status: \'ok\'', async function() {
       const response = await request(app).get('/status');
-      expect(response.body.status).is.equal('k');
+      expect(response.body.status).is.equal('ok');
     });
   });
 });
