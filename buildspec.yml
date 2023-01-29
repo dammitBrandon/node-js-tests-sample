@@ -26,7 +26,8 @@ phases:
       - echo Running Tests
       - npm test
       - docker images
-      - docker build -t $BUILD_TAG .
+#      - docker build -t $BUILD_TAG .
+      - docker buildx build --platform=linux/arm64 -t $BUILD_TAG .
       - echo Checking if container is present
       - docker images
       - docker tag $BUILD_TAG $ECR_TAG
