@@ -29,6 +29,7 @@ phases:
       - docker --version
       - docker build --help
       - docker buildx --help
+      - docker buildx build --help
 #      - docker build -t $BUILD_TAG .
 #      - docker buildx build --platform=linux/arm64 -t $BUILD_TAG .
 #      - echo Checking if container is present
