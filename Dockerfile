@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:14.5.0-alpine
 MAINTAINER BBAILEY
 
 RUN mkdir -p /usr/src/app
